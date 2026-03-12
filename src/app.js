@@ -1,5 +1,4 @@
 import express from 'express';
-import authrouter from './routes/auth.route.js';
 import cookieParser from "cookie-parser";
 
 
@@ -11,8 +10,11 @@ app.get('/',(req,res)=>{
     res.send("Hello World");
 });
 
-app.use('/api/auth',authrouter);
-
-
+import accountRoutes from "./routes/account.route.js";
+import transactionRoutes from "./routes/transaction.route.js";
+import authRoutes from "./routes/auth.route.js";
+app.use('/api/accounts', accountRoutes);
+app.use('/api/transactions', transactionRoutes);
+app.use('/api/auth',authRoutes);
 
 export default app;
