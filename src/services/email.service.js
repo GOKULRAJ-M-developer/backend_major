@@ -1,7 +1,8 @@
-import e from 'express';
 import nodemailer from 'nodemailer';
 
-const transporter = nodemailer.createTransport({
+console.log("to verify:",process.env.MONGO_URI);
+
+const transporter = nodemailer.createTransport({   
     service: 'gmail',
     auth: {
         type: 'OAuth2',
@@ -9,6 +10,7 @@ const transporter = nodemailer.createTransport({
         clientId: process.env.CLIENT_ID,
         clientSecret: process.env.CLIENT_SECRET,
         refreshToken: process.env.REFRESH_TOKEN,
+        accessToken: process.env.ACCESS_TOKEN
     },
 });
 
@@ -18,6 +20,7 @@ transporter.verify((error, success) => {
         console.error('Error connecting to email server:', error);
     } else {
         console.log('Email server is ready to send messages');
+
     }
 });
 

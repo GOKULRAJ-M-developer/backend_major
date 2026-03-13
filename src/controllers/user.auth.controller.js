@@ -1,5 +1,6 @@
-import { User } from "../models/user.model.js";
+import  User  from "../models/user.model.js";
 import jwt from "jsonwebtoken";
+import emailService from "../services/email.service.js";
 
 const userRegisterController = async (req, res) => {
     try {
@@ -25,6 +26,7 @@ const userRegisterController = async (req, res) => {
             },
             token
         })
+     await emailService.sendRegistrationEmail(user.email,user.name);   
 
     } catch (error) {
         return res.status(500).json({ message: error.message });
