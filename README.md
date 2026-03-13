@@ -61,7 +61,7 @@ Create a `.env` file in the root directory with the following variables:
 
 ```env
 # Database
-MONGO_URI=mongodb+srv://username:password@cluster.mongodb.net/dbname
+MONGO_URI=your_mongo_uri
 
 # JWT
 JWT_SECRET=your_jwt_secret_key
